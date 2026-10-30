@@ -860,7 +860,7 @@ fn half_outlined_ai(story: Option<&str>, more: usize, type_content: &str) -> Vec
     let page = PdfPage {
         resources: format!(
             "/Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >> \
-             /F2 << /Type /Font /Subtype /Type1 /BaseFont /VectorCraftTestUnnamed /ToUnicode {} 0 R >> >>",
+             /F2 << /Type /Font /Subtype /Type1 /BaseFont /VectorStudioTestUnnamed /ToUnicode {} 0 R >> >>",
             first_extra(1) + 1
         ),
         entries: format!("/PieceInfo << /Illustrator << /Private << /AIPrivateData1 {} 0 R /NumBlock 1 >> >> >>", first_extra(1)),

@@ -1,4 +1,4 @@
-//! The VectorCraft brand mark: the app icon (the engraved dragon, `assets/app-icon/`, see its
+//! The VectorCraft brand mark: the app icon (the Adotme mark, `assets/app-icon/`, see its
 //! README). The PNG carries the icon's rounded corners; it is decoded once per context into a
 //! mipmapped texture, so it stays crisp from the 18 pt app-bar mark to the About box.
 
@@ -86,4 +86,12 @@ mod tests {
         let (uploads, marks) = frame();
         assert_eq!((uploads, marks.len()), (0, 1));
     }
+}
+
+pub fn heading(ui: &mut Ui, name: &str, color: Color32) {
+    ui.horizontal(|ui| {
+        let (rect, _) = ui.allocate_exact_size(egui::vec2(48.0, 48.0), egui::Sense::hover());
+        paint_mark(ui, rect);
+        ui.label(egui::RichText::new(name).size(38.0).strong().color(color));
+    });
 }

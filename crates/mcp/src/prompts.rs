@@ -289,7 +289,7 @@ One undo step covers the whole change; gradients and linked swatches stay linked
             },
         ],
         text: "\
-Trace the image at {path} in VectorCraft with the \"{preset}\" preset, then style the result
+Trace the image at {path} in VectorStudio with the \"{preset}\" preset, then style the result
 with the {effect} effect.
 
 Method:
