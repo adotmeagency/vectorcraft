@@ -96,7 +96,7 @@ pub(crate) fn show(app: &mut VectorcraftApp, ctx: &egui::Context) {
             Status::Idle => (false, None),
             Status::Checking => (true, Some(tl!("Checking for updates…").to_string())),
             Status::UpToDate => {
-                (true, Some(tl!("VectorCraft {version} is currently the newest version available.").replace("{version}", env!("CARGO_PKG_VERSION"))))
+                (true, Some(tl!("VectorStudio {version} is currently the newest version available.").replace("{version}", env!("CARGO_PKG_VERSION"))))
             }
             Status::Failed(e) => (true, Some(tl!("Could not check for updates:\n{error}").replace("{error}", e))),
         };
@@ -104,7 +104,7 @@ pub(crate) fn show(app: &mut VectorcraftApp, ctx: &egui::Context) {
 
     if app.updates_rt.manual_window_open {
         let mut open = true;
-        egui::Window::new(tl!("VectorCraft Updates"))
+        egui::Window::new(tl!("VectorStudio Updates"))
             .open(&mut open)
             .collapsible(false)
             .resizable(false)
@@ -156,8 +156,8 @@ mod tests {
         let release = craft_update::Release {
             tag: "v99.0.0".into(),
             version: craft_update::parse_version("99.0.0"),
-            name: "VectorCraft 99.0.0".into(),
-            html_url: "https://github.com/storytold/vectorcraft/releases/tag/v99.0.0".into(),
+            name: "VectorStudio 99.0.0".into(),
+            html_url: "https://github.com/adotmeagency/vectorcraft/releases/tag/v99.0.0".into(),
             ..Default::default()
         };
         app.updates_rt.updater.offer(release);

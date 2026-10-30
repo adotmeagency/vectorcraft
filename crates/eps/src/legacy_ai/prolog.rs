@@ -26,7 +26,7 @@ pub(super) fn fonts(s: &mut String, fonts: &[(String, bool)]) {
 
 /// The prolog's procedure set, as `%%DocumentSuppliedResources` names it: a file that has it is
 /// read from its program when its layers are asked for ([`crate::import_with`]).
-pub(crate) const PROCSET: &str = "VectorCraft_Legacy 1 0";
+pub(crate) const PROCSET: &str = "VectorStudio_Legacy 1 0";
 
 /// The prolog: a procedure set of this writer's own (`VectorCraft_Legacy 1 0`), in a dictionary
 /// (`VCLegacy`) the setup begins and the trailer ends (§1.2: the prolog holds definitions only,
@@ -39,7 +39,7 @@ pub(crate) const PROCSET: &str = "VectorCraft_Legacy 1 0";
 /// that follow `XI`. Gradients fill with the colour set before them (the writer sets the first
 /// stop's), and type marks nothing: apps that read the format draw both. The page trailer's
 /// `annotatepage` (§3, Script Setup: `gsave annotatepage grestore showpage`) marks nothing.
-pub(super) const PROLOG: &str = "%%BeginResource: procset VectorCraft_Legacy 1 0
+pub(super) const PROLOG: &str = "%%BeginResource: procset VectorStudio_Legacy 1 0
 /VCLegacy 96 dict def
 VCLegacy begin
 /bd {bind def} bind def

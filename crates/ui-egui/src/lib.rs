@@ -11,7 +11,7 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png")),
     accent: Some([0xe8, 0x57, 0x3f]),
-    ..craft_update::suite::VECTORCRAFT
+    ..craft_update::app::App::new("vectorcraft", "VectorStudio", "Creative tools", "adotmeagency/vectorcraft")
 };
 
 /// Translate a UI string literal into the language the UI is drawn in (see [`i18n`]).

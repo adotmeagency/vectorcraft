@@ -198,7 +198,7 @@ fn main() -> std::process::ExitCode {
     if let Some(logger) = logger {
         match log_dir().filter(|_| prefs_enabled()) {
             Some(dir) => match logger.attach_dir(&dir) {
-                Ok(path) => log::info!("VectorCraft {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
+                Ok(path) => log::info!("VectorStudio {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
                 // Standard error only by now (`attach_dir` gave up on the file); unlike `eprintln!`, never panics.
                 Err(e) => log::warn!("no log file: {e}"),
             },
@@ -347,11 +347,11 @@ fn main() -> std::process::ExitCode {
     let run = |options: eframe::NativeOptions, app_creator: eframe::AppCreator<'_>| {
         #[cfg(target_os = "linux")]
         {
-            linux_stylus::run_native("VectorCraft", options, app_creator)
+            linux_stylus::run_native("VectorStudio", options, app_creator)
         }
         #[cfg(not(target_os = "linux"))]
         {
-            eframe::run_native("VectorCraft", options, app_creator)
+            eframe::run_native("VectorStudio", options, app_creator)
         }
     };
     let outcome = vectorcraft_engine::guard::catch_panic(|| {
@@ -364,7 +364,7 @@ fn main() -> std::process::ExitCode {
                 prefs_dir::attach_profile_store(&mut session);
                 prefs_dir::attach_plugin_store(&mut session);
                 let mut app = VectorcraftApp::new(session, services(cc.winit_window().cloned(), cc.egui_ctx.clone()));
-                app.set_startup_update_check(true);
+                app.set_startup_update_check(false);
                 load_prefs(&mut app, saved);
                 // The saved PDF presets live in their own folder (also read by vectorcraft-cli),
                 // which takes over from the copy the preferences file used to hold.
@@ -416,15 +416,15 @@ fn main() -> std::process::ExitCode {
                             ""
                         };
                         app.status(format!(
-                            "The graphics processor tried first couldn't show the window, so VectorCraft started again on {summary}{hint}"
+                            "The graphics processor tried first couldn't show the window, so VectorStudio started again on {summary}{hint}"
                         ));
                     } else if let Some(crash) = &crash {
                         app.status(match crash {
                             gpu::Crash::Adapter { name, .. } => format!(
-                                "The last start of VectorCraft ended on {name} before its window appeared, so it started on {summary}. To try that graphics processor again, change Preferences › Performance › Graphics Processor or start with WGPU_BACKEND set"
+                                "The last start of VectorStudio ended on {name} before its window appeared, so it started on {summary}. To try that graphics processor again, change Preferences › Performance › Graphics Processor or start with WGPU_BACKEND set"
                             ),
                             gpu::Crash::Listing => format!(
-                                "The last start of VectorCraft ended while it listed the graphics processors, so it started on {summary} with OpenGL alone. To try the other graphics backends again, change Preferences › Performance › Graphics Processor or start with WGPU_BACKEND set"
+                                "The last start of VectorStudio ended while it listed the graphics processors, so it started on {summary} with OpenGL alone. To try the other graphics backends again, change Preferences › Performance › Graphics Processor or start with WGPU_BACKEND set"
                             ),
                         });
                     }
@@ -480,7 +480,7 @@ fn main() -> std::process::ExitCode {
     match outcome {
         Ok(()) => std::process::ExitCode::SUCCESS,
         Err(e) => {
-            log::error!("VectorCraft stopped: {e}");
+            log::error!("VectorStudio stopped: {e}");
             std::process::ExitCode::FAILURE
         }
     }

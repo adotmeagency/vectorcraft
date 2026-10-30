@@ -366,11 +366,11 @@ impl<'a> Reader<'a> {
     pub(super) fn finish(mut self) -> Result<Structure, String> {
         if !self.unknown.is_empty() {
             let ops: Vec<String> = self.unknown.iter().map(|o| format!("`{o}`")).collect();
-            self.unsupported.insert(format!("operators VectorCraft doesn't know ({})", ops.join(", ")));
+            self.unsupported.insert(format!("operators VectorStudio doesn't know ({})", ops.join(", ")));
         }
         if !self.unsupported.is_empty() {
             let list: Vec<&str> = self.unsupported.iter().map(String::as_str).collect();
-            return Err(format!("it has {}, which VectorCraft doesn't read from it yet", join_and(&list)));
+            return Err(format!("it has {}, which VectorStudio doesn't read from it yet", join_and(&list)));
         }
         if self.doc.layers.is_empty() {
             return Err("it has no layers".into());

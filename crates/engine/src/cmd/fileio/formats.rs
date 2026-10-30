@@ -344,7 +344,7 @@ const fn reader(id: &'static str, label: &'static str, extensions: &'static [&'s
 pub const FORMATS: &[Format] = &[
     Format {
         id: "vectorcraft",
-        label: "VectorCraft",
+        label: "VectorStudio",
         extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
         mime: "application/json",
         read: true,
@@ -448,7 +448,7 @@ pub const FORMATS: &[Format] = &[
     Format { id: "bmp", label: "BMP", extensions: &["bmp"], mime: "image/bmp", read: true, write: true, raster: true, options: BMP_OPTIONS },
     Format {
         id: "template",
-        label: "VectorCraft Template",
+        label: "VectorStudio Template",
         extensions: &["vctemplate"],
         mime: "application/json",
         read: true,
